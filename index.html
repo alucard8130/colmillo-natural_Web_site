@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colmillo Natural – Snacks Premium para Perros</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #E8600A;
+    --orange-dark: #C04E06;
+    --orange-light: #FF7A20;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --card-bg: #1A1A1A;
+    --white: #FFFFFF;
+    --gray: #888888;
+    --light-gray: #2A2A2A;
+    --success: #2ECC71;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--orange);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 32px;
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-logo-icon { font-size: 28px; }
+  .nav-brand { font-family: 'Bebas Neue'; font-size: 26px; letter-spacing: 2px; }
+  .nav-brand span { color: var(--orange); }
+  .nav-links { display: flex; gap: 24px; list-style: none; }
+  .nav-links a { color: #ccc; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: color .2s; }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cart {
+    background: var(--orange); color: var(--white); border: none;
+    padding: 10px 20px; border-radius: 4px; cursor: pointer;
+    font-family: 'Oswald'; font-size: 14px; font-weight: 600; letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px; transition: background .2s;
+  }
+  .nav-cart:hover { background: var(--orange-dark); }
+  .cart-count {
+    background: var(--white); color: var(--orange);
+    border-radius: 50%; width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0A0A0A 0%, #1a0800 60%, #0A0A0A 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; padding-top: 70px;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(232,96,10,0.15), transparent);
+  }
+  .paw-bg {
+    position: absolute; font-size: 200px; opacity: 0.03;
+    pointer-events: none; user-select: none;
+  }
+  .paw-bg:nth-child(1) { top: 10%; left: 5%; transform: rotate(-20deg); }
+  .paw-bg:nth-child(2) { bottom: 10%; right: 5%; transform: rotate(15deg); }
+  .hero-content { text-align: center; position: relative; z-index: 1; padding: 40px 20px; }
+  .hero-badge {
+    display: inline-block; background: var(--orange); color: var(--white);
+    font-family: 'Oswald'; font-size: 13px; letter-spacing: 3px; padding: 6px 20px;
+    margin-bottom: 20px; clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue'; font-size: clamp(64px, 10vw, 120px);
+    line-height: .95; letter-spacing: 4px; margin-bottom: 8px;
+  }
+  .hero h1 span { color: var(--orange); }
+  .hero-sub { font-family: 'Oswald'; font-size: clamp(16px, 3vw, 22px); color: #aaa; letter-spacing: 2px; margin-bottom: 32px; }
+  .hero-tagline { font-size: 18px; color: #ddd; font-style: italic; margin-bottom: 40px; }
+  .hero-tagline span { color: var(--orange-light); }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--orange); color: var(--white);
+    padding: 16px 36px; border-radius: 4px; text-decoration: none;
+    font-family: 'Oswald'; font-size: 16px; font-weight: 600; letter-spacing: 2px;
+    border: none; cursor: pointer; transition: all .25s;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 16px 36px; border: 2px solid var(--orange); border-radius: 4px;
+    font-family: 'Oswald'; font-size: 16px; font-weight: 600; letter-spacing: 2px;
+    cursor: pointer; transition: all .25s; text-decoration: none;
+  }
+  .btn-outline:hover { background: var(--orange); transform: translateY(-2px); }
+  .hero-badges { display: flex; gap: 32px; justify-content: center; margin-top: 60px; flex-wrap: wrap; }
+  .hero-badge-item { text-align: center; }
+  .hero-badge-item .icon { font-size: 28px; margin-bottom: 4px; }
+  .hero-badge-item .label { font-size: 11px; letter-spacing: 2px; color: #888; text-transform: uppercase; }
+
+  /* ── SECTION HEADER ── */
+  .section-header { text-align: center; margin-bottom: 48px; }
+  .section-header h2 { font-family: 'Bebas Neue'; font-size: clamp(40px, 6vw, 64px); letter-spacing: 3px; }
+  .section-header h2 span { color: var(--orange); }
+  .section-header p { color: #888; font-size: 15px; margin-top: 8px; }
+  .section-line { width: 60px; height: 3px; background: var(--orange); margin: 12px auto 0; }
+
+  /* ── PRODUCTS ── */
+  .section { padding: 80px 24px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .category-tabs {
+    display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+    margin-bottom: 40px;
+  }
+  .tab-btn {
+    background: var(--light-gray); color: #aaa; border: none;
+    padding: 10px 22px; border-radius: 4px; cursor: pointer;
+    font-family: 'Oswald'; font-size: 13px; font-weight: 600; letter-spacing: 1px;
+    transition: all .2s;
+  }
+  .tab-btn:hover, .tab-btn.active { background: var(--orange); color: var(--white); }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .product-card {
+    background: var(--card-bg);
+    border: 1px solid #222;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all .25s;
+    position: relative;
+  }
+  .product-card:hover { transform: translateY(-4px); border-color: var(--orange); box-shadow: 0 8px 32px rgba(232,96,10,0.2); }
+  .product-card.hidden { display: none; }
+
+  .product-img {
+    width: 100%; height: 180px; object-fit: cover;
+    background: #222;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px;
+  }
+  .product-info { padding: 16px; }
+  .product-category {
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--orange); font-weight: 700; margin-bottom: 4px;
+  }
+  .product-name { font-family: 'Oswald'; font-size: 18px; font-weight: 700; margin-bottom: 4px; line-height: 1.2; }
+  .product-desc { font-size: 12px; color: #777; margin-bottom: 12px; }
+
+  .product-variants { margin-bottom: 12px; }
+  .variant-select {
+    width: 100%; background: var(--light-gray); color: var(--white);
+    border: 1px solid #333; border-radius: 4px; padding: 8px 10px;
+    font-family: 'Lato'; font-size: 13px; cursor: pointer; appearance: none;
+  }
+
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: 'Bebas Neue'; font-size: 32px; color: var(--orange); letter-spacing: 1px; }
+  .product-price small { font-size: 14px; color: #666; font-family: 'Lato'; }
+  .add-btn {
+    background: var(--orange); color: var(--white); border: none;
+    padding: 10px 18px; border-radius: 4px; cursor: pointer;
+    font-family: 'Oswald'; font-size: 13px; font-weight: 600; letter-spacing: 1px;
+    transition: background .2s;
+  }
+  .add-btn:hover { background: var(--orange-dark); }
+
+  /* ── WHY US ── */
+  .why-section { background: var(--dark); padding: 80px 24px; }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+  .why-item { text-align: center; }
+  .why-icon { font-size: 48px; margin-bottom: 16px; }
+  .why-item h3 { font-family: 'Oswald'; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .why-item p { font-size: 13px; color: #777; line-height: 1.6; }
+
+  /* ── CART PANEL ── */
+  .cart-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+    z-index: 200; opacity: 0; pointer-events: none; transition: opacity .3s;
+  }
+  .cart-overlay.open { opacity: 1; pointer-events: all; }
+  .cart-panel {
+    position: fixed; top: 0; right: -480px; width: 480px; max-width: 100vw;
+    height: 100vh; background: #111; border-left: 2px solid var(--orange);
+    z-index: 201; transition: right .35s cubic-bezier(.4,0,.2,1);
+    display: flex; flex-direction: column;
+  }
+  .cart-panel.open { right: 0; }
+  .cart-header {
+    padding: 20px 24px; border-bottom: 1px solid #222;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cart-header h3 { font-family: 'Bebas Neue'; font-size: 28px; letter-spacing: 2px; }
+  .cart-close { background: none; border: none; color: #888; font-size: 24px; cursor: pointer; transition: color .2s; }
+  .cart-close:hover { color: var(--white); }
+  .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+  .cart-empty { text-align: center; padding: 60px 0; color: #555; }
+  .cart-empty .empty-icon { font-size: 64px; margin-bottom: 16px; }
+  .cart-empty p { font-size: 15px; }
+
+  .cart-item {
+    display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid #222;
+    align-items: center;
+  }
+  .cart-item-emoji { font-size: 32px; width: 48px; text-align: center; }
+  .cart-item-info { flex: 1; }
+  .cart-item-name { font-family: 'Oswald'; font-size: 15px; font-weight: 600; }
+  .cart-item-variant { font-size: 11px; color: #666; margin-top: 2px; }
+  .cart-item-price { font-family: 'Bebas Neue'; font-size: 20px; color: var(--orange); }
+  .cart-item-qty { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+  .qty-btn { background: var(--light-gray); border: none; color: var(--white); width: 26px; height: 26px; border-radius: 3px; cursor: pointer; font-size: 15px; transition: background .2s; }
+  .qty-btn:hover { background: var(--orange); }
+  .qty-val { font-weight: 700; font-size: 15px; min-width: 20px; text-align: center; }
+  .remove-btn { background: none; border: none; color: #555; cursor: pointer; font-size: 18px; transition: color .2s; padding: 4px; }
+  .remove-btn:hover { color: #e74c3c; }
+
+  .cart-footer { padding: 20px 24px; border-top: 1px solid #222; }
+  .cart-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .cart-total span:first-child { font-family: 'Oswald'; font-size: 18px; color: #aaa; letter-spacing: 1px; }
+  .cart-total-price { font-family: 'Bebas Neue'; font-size: 36px; color: var(--orange); }
+  .checkout-btn {
+    width: 100%; background: var(--orange); color: var(--white);
+    border: none; padding: 16px; border-radius: 4px; cursor: pointer;
+    font-family: 'Oswald'; font-size: 18px; font-weight: 700; letter-spacing: 2px;
+    transition: background .2s;
+  }
+  .checkout-btn:hover { background: var(--orange-dark); }
+
+  /* ── CHECKOUT MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+    z-index: 300; display: none; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: #111; border: 2px solid var(--orange); border-radius: 8px;
+    width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto;
+  }
+  .modal-header {
+    padding: 20px 24px; border-bottom: 1px solid #222;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; background: #111; z-index: 1;
+  }
+  .modal-header h3 { font-family: 'Bebas Neue'; font-size: 26px; letter-spacing: 2px; }
+  .modal-close { background: none; border: none; color: #888; font-size: 22px; cursor: pointer; }
+  .modal-close:hover { color: var(--white); }
+  .modal-body { padding: 24px; }
+
+  .form-steps { display: flex; gap: 8px; margin-bottom: 32px; }
+  .step {
+    flex: 1; text-align: center; padding: 10px 4px;
+    border-bottom: 3px solid #333; color: #555;
+    font-family: 'Oswald'; font-size: 13px; font-weight: 600; letter-spacing: 1px;
+    transition: all .2s;
+  }
+  .step.active { border-color: var(--orange); color: var(--orange); }
+  .step.done { border-color: var(--success); color: var(--success); }
+
+  .step-panel { display: none; }
+  .step-panel.active { display: block; }
+
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 12px; letter-spacing: 1px; color: #888; text-transform: uppercase; margin-bottom: 6px; font-weight: 700; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: var(--light-gray); color: var(--white);
+    border: 1px solid #333; border-radius: 4px; padding: 12px 14px;
+    font-family: 'Lato'; font-size: 14px; transition: border-color .2s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none; border-color: var(--orange);
+  }
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .payment-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .payment-option { display: none; }
+  .payment-label {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 16px 12px; border: 2px solid #333; border-radius: 6px;
+    cursor: pointer; transition: all .2s; text-align: center;
+  }
+  .payment-label:hover { border-color: var(--orange); }
+  .payment-option:checked + .payment-label { border-color: var(--orange); background: rgba(232,96,10,0.1); }
+  .payment-label .pay-icon { font-size: 28px; }
+  .payment-label .pay-name { font-family: 'Oswald'; font-size: 14px; font-weight: 600; letter-spacing: 1px; }
+  .payment-label .pay-desc { font-size: 11px; color: #666; }
+
+  .payment-details { margin-top: 16px; padding: 16px; background: var(--light-gray); border-radius: 6px; }
+  .payment-details h4 { font-family: 'Oswald'; font-size: 16px; margin-bottom: 8px; color: var(--orange); }
+  .payment-details p { font-size: 13px; color: #aaa; line-height: 1.6; }
+  .payment-details .account { font-family: 'Oswald'; font-size: 20px; color: var(--white); margin-top: 6px; }
+
+  .order-summary { background: var(--light-gray); border-radius: 6px; padding: 16px; margin-bottom: 20px; }
+  .order-summary h4 { font-family: 'Oswald'; font-size: 16px; margin-bottom: 12px; }
+  .summary-item { display: flex; justify-content: space-between; font-size: 13px; padding: 4px 0; color: #aaa; }
+  .summary-item.total { border-top: 1px solid #444; margin-top: 8px; padding-top: 10px; color: var(--white); font-weight: 700; font-size: 15px; }
+  .summary-item.total .price { font-family: 'Bebas Neue'; font-size: 22px; color: var(--orange); }
+
+  .modal-nav { display: flex; gap: 12px; margin-top: 24px; }
+  .btn-back { background: var(--light-gray); color: #aaa; border: none; padding: 14px 24px; border-radius: 4px; cursor: pointer; font-family: 'Oswald'; font-size: 14px; font-weight: 600; letter-spacing: 1px; transition: all .2s; flex: 1; }
+  .btn-back:hover { color: var(--white); }
+  .btn-next { background: var(--orange); color: var(--white); border: none; padding: 14px 24px; border-radius: 4px; cursor: pointer; font-family: 'Oswald'; font-size: 14px; font-weight: 600; letter-spacing: 1px; transition: all .2s; flex: 2; }
+  .btn-next:hover { background: var(--orange-dark); }
+
+  /* ── SUCCESS ── */
+  .success-panel { text-align: center; padding: 40px 24px; }
+  .success-icon { font-size: 80px; margin-bottom: 20px; }
+  .success-panel h3 { font-family: 'Bebas Neue'; font-size: 40px; margin-bottom: 12px; }
+  .success-panel h3 span { color: var(--orange); }
+  .success-panel p { color: #888; font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366; color: var(--white); border: none;
+    padding: 14px 28px; border-radius: 4px; cursor: pointer;
+    font-family: 'Oswald'; font-size: 16px; font-weight: 600; letter-spacing: 1px;
+    text-decoration: none; transition: background .2s;
+  }
+  .whatsapp-btn:hover { background: #1da851; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: var(--orange); color: var(--white); padding: 12px 24px;
+    border-radius: 4px; font-family: 'Oswald'; font-size: 15px; font-weight: 600;
+    letter-spacing: 1px; z-index: 500; transition: transform .3s;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #000; border-top: 2px solid var(--orange);
+    padding: 48px 24px; text-align: center;
+  }
+  .footer-logo { font-family: 'Bebas Neue'; font-size: 40px; letter-spacing: 4px; margin-bottom: 8px; }
+  .footer-logo span { color: var(--orange); }
+  .footer-tagline { color: #555; font-size: 14px; margin-bottom: 24px; font-style: italic; }
+  .footer-contact { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+  .footer-contact a { color: #888; text-decoration: none; font-size: 14px; transition: color .2s; }
+  .footer-contact a:hover { color: var(--orange); }
+  .social-links { display: flex; gap: 16px; justify-content: center; margin-bottom: 32px; }
+  .social-link { font-size: 24px; text-decoration: none; transition: transform .2s; }
+  .social-link:hover { transform: scale(1.2); }
+  .footer-copy { color: #444; font-size: 12px; }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 150;
+    background: #25D366; border-radius: 50%; width: 58px; height: 58px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform .2s;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+
+  @media (max-width: 600px) {
+    nav { padding: 10px 16px; }
+    .nav-links { display: none; }
+    .cart-panel { width: 100vw; }
+    .form-row { grid-template-columns: 1fr; }
+    .payment-methods { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Animation */
+  @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+  .hero-content > * { animation: fadeUp .6s ease both; }
+  .hero-content > *:nth-child(1) { animation-delay: .1s; }
+  .hero-content > *:nth-child(2) { animation-delay: .2s; }
+  .hero-content > *:nth-child(3) { animation-delay: .3s; }
+  .hero-content > *:nth-child(4) { animation-delay: .4s; }
+  .hero-content > *:nth-child(5) { animation-delay: .5s; }
+  .hero-content > *:nth-child(6) { animation-delay: .6s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-icon">🐾</span>
+    <span class="nav-brand">COLMILLO <span>NATURAL</span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#por-que">Por qué elegirnos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cart" onclick="toggleCart()">
+    🛒 Mi Pedido <span class="cart-count" id="cartCount">0</span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="paw-bg">🐾</div>
+  <div class="paw-bg">🐾</div>
+  <div class="hero-content">
+    <div class="hero-badge">🏆 CALIDAD PREMIUM</div>
+    <h1>COLMILLO<br><span>NATURAL</span></h1>
+    <p class="hero-sub">ALIMENTOS DESHIDRATADOS PREMIUM PARA PERROS</p>
+    <p class="hero-tagline">Sano y sabroso, simplemente <span>asombroso.</span></p>
+    <div class="hero-btns">
+      <a href="#productos" class="btn-primary">VER PRODUCTOS</a>
+      <a href="https://wa.me/5539160829" target="_blank" class="btn-outline">💬 WHATSAPP</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge-item"><div class="icon">🌿</div><div class="label">100% Naturales</div></div>
+      <div class="hero-badge-item"><div class="icon">🚫</div><div class="label">Sin Conservadores</div></div>
+      <div class="hero-badge-item"><div class="icon">💪</div><div class="label">Altos en Proteína</div></div>
+      <div class="hero-badge-item"><div class="icon">🦷</div><div class="label">Salud Dental</div></div>
+      <div class="hero-badge-item"><div class="icon">❤️</div><div class="label">Hechos con Amor</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="productos">
+  <div class="container">
+    <div class="section-header">
+      <h2>NUESTROS <span>PRODUCTOS</span></h2>
+      <div class="section-line"></div>
+      <p>Todo natural, todo para tu perro</p>
+    </div>
+    <div class="category-tabs">
+      <button class="tab-btn active" onclick="filterCat('all', this)">Todo</button>
+      <button class="tab-btn" onclick="filterCat('snacks', this)">🥩 Snacks</button>
+      <button class="tab-btn" onclick="filterCat('huesos', this)">🦴 Huesos Recreativos</button>
+      <button class="tab-btn" onclick="filterCat('mordedores', this)">🐕 Mordedores</button>
+      <button class="tab-btn" onclick="filterCat('premium', this)">⭐ Premium</button>
+      <button class="tab-btn" onclick="filterCat('especiales', this)">✨ Especiales</button>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section" id="por-que">
+  <div class="container">
+    <div class="section-header">
+      <h2>¿POR QUÉ ELEGIR <span>COLMILLO NATURAL?</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><div class="why-icon">🌿</div><h3>100% NATURALES</h3><p>Ingredientes de la más alta calidad, sin aditivos artificiales ni rellenos.</p></div>
+      <div class="why-item"><div class="why-icon">🚫🧪</div><h3>SIN CONSERVADORES</h3><p>Ni colorantes artificiales. Lo que ves es exactamente lo que tu perro come.</p></div>
+      <div class="why-item"><div class="why-icon">💪</div><h3>ALTOS EN PROTEÍNA</h3><p>Ideales para una dieta balanceada que apoye músculos y articulaciones.</p></div>
+      <div class="why-item"><div class="why-icon">🦷</div><h3>SALUD DENTAL</h3><p>Ayudan a reducir el sarro y fortalecen las encías de forma natural.</p></div>
+      <div class="why-item"><div class="why-icon">❤️</div><h3>HECHOS CON AMOR</h3><p>Pensados en el bienestar y felicidad de tu perro, de todas las razas.</p></div>
+      <div class="why-item"><div class="why-icon">🚚</div><h3>ENTREGA A DOMICILIO</h3><p>Recibe tus pedidos directo en la puerta de tu casa. Rápido y seguro.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="footer-logo">COLMILLO <span>NATURAL</span></div>
+  <p class="footer-tagline">Premios naturales, perros felices 🐾</p>
+  <div class="footer-contact">
+    <a href="https://wa.me/5539160829">📱 55 3916 0829</a>
+    <a href="#">📘 Facebook</a>
+    <a href="#">📸 Instagram</a>
+    <a href="#">🎵 TikTok</a>
+  </div>
+  <div class="social-links">
+    <a class="social-link" href="#">📘</a>
+    <a class="social-link" href="#">📷</a>
+    <a class="social-link" href="#">🎵</a>
+  </div>
+  <p class="footer-copy">© 2026 Colmillo Natural · Todos los derechos reservados</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="wa-float" href="https://wa.me/5539160829" target="_blank">💬</a>
+
+<!-- CART OVERLAY + PANEL -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3>🛒 MI PEDIDO</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>TOTAL</span>
+      <span class="cart-total-price" id="cartTotal">$0</span>
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">PROCEDER AL PEDIDO →</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>📦 FINALIZAR PEDIDO</h3>
+      <button class="modal-close" onclick="closeCheckout()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <div class="form-steps">
+        <div class="step active" id="step-tab-1">1. DATOS</div>
+        <div class="step" id="step-tab-2">2. ENTREGA</div>
+        <div class="step" id="step-tab-3">3. PAGO</div>
+        <div class="step" id="step-tab-4">4. CONFIRMAR</div>
+      </div>
+
+      <!-- STEP 1: Personal -->
+      <div class="step-panel active" id="step-1">
+        <div class="form-group">
+          <label>Nombre completo *</label>
+          <input type="text" id="f-name" placeholder="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label>Teléfono / WhatsApp *</label>
+          <input type="tel" id="f-phone" placeholder="55 XXXX XXXX">
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" id="f-email" placeholder="tu@correo.com">
+        </div>
+        <div class="modal-nav">
+          <button class="btn-next" onclick="goStep(2)">CONTINUAR →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Address -->
+      <div class="step-panel" id="step-2">
+        <div class="form-group">
+          <label>Calle y número *</label>
+          <input type="text" id="f-street" placeholder="Ej. Av. Principal 123">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Colonia *</label>
+            <input type="text" id="f-colonia" placeholder="Tu colonia">
+          </div>
+          <div class="form-group">
+            <label>Código Postal *</label>
+            <input type="text" id="f-cp" placeholder="XXXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ciudad *</label>
+            <input type="text" id="f-city" placeholder="Ciudad">
+          </div>
+          <div class="form-group">
+            <label>Estado *</label>
+            <input type="text" id="f-state" placeholder="Estado">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Referencias (entre qué calles, color de casa, etc.)</label>
+          <textarea id="f-refs" placeholder="Ej. Entre Calle A y Calle B, casa color azul…"></textarea>
+        </div>
+        <div class="modal-nav">
+          <button class="btn-back" onclick="goStep(1)">← VOLVER</button>
+          <button class="btn-next" onclick="goStep(3)">CONTINUAR →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Payment -->
+      <div class="step-panel" id="step-3">
+        <p style="font-size:13px;color:#888;margin-bottom:16px;">Selecciona tu forma de pago:</p>
+        <div class="payment-methods">
+          <div>
+            <input type="radio" name="payment" id="pay-card" value="card" class="payment-option" onchange="updatePaymentInfo()">
+            <label for="pay-card" class="payment-label">
+              <span class="pay-icon">💳</span>
+              <span class="pay-name">TARJETA</span>
+              <span class="pay-desc">Débito o crédito</span>
+            </label>
+          </div>
+          <div>
+            <input type="radio" name="payment" id="pay-cash" value="cash" class="payment-option" onchange="updatePaymentInfo()">
+            <label for="pay-cash" class="payment-label">
+              <span class="pay-icon">💵</span>
+              <span class="pay-name">EFECTIVO</span>
+              <span class="pay-desc">Al recibir</span>
+            </label>
+          </div>
+          <div>
+            <input type="radio" name="payment" id="pay-transfer" value="transfer" class="payment-option" onchange="updatePaymentInfo()">
+            <label for="pay-transfer" class="payment-label">
+              <span class="pay-icon">🏦</span>
+              <span class="pay-name">TRANSFERENCIA</span>
+              <span class="pay-desc">SPEI / banco</span>
+            </label>
+          </div>
+          <div>
+            <input type="radio" name="payment" id="pay-whatsapp" value="whatsapp" class="payment-option" onchange="updatePaymentInfo()">
+            <label for="pay-whatsapp" class="payment-label">
+              <span class="pay-icon">📱</span>
+              <span class="pay-name">WHATSAPP</span>
+              <span class="pay-desc">Acordar por chat</span>
+            </label>
+          </div>
+        </div>
+        <div class="payment-details" id="paymentDetails" style="display:none"></div>
+        <div class="modal-nav">
+          <button class="btn-back" onclick="goStep(2)">← VOLVER</button>
+          <button class="btn-next" onclick="goStep(4)">CONTINUAR →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Confirm -->
+      <div class="step-panel" id="step-4">
+        <div class="order-summary" id="orderSummary"></div>
+        <div class="form-group">
+          <label>Notas adicionales para tu pedido</label>
+          <textarea id="f-notes" placeholder="Ej. tamaño de perro, preferencias, etc."></textarea>
+        </div>
+        <div class="modal-nav">
+          <button class="btn-back" onclick="goStep(3)">← VOLVER</button>
+          <button class="btn-next" onclick="placeOrder()">✅ CONFIRMAR PEDIDO</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-panel" id="successPanel" style="display:none">
+      <div class="success-icon">🎉</div>
+      <h3>¡PEDIDO <span>RECIBIDO!</span></h3>
+      <p>Gracias por tu pedido. En breve nos pondremos en contacto contigo para confirmar la entrega y los detalles de pago.</p>
+      <p style="margin-bottom:32px;">También puedes enviarnos tu pedido directamente por WhatsApp.</p>
+      <a class="whatsapp-btn" id="waOrderBtn" href="#" target="_blank">
+        💬 ENVIAR POR WHATSAPP
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── PRODUCT DATA ──
+const products = [
+  // SNACKS DESHIDRATADOS
+  { id:1,  cat:'snacks', emoji:'🥩', name:'Hígado de Res',       desc:'100 g',           price:60,  unit:'' },
+  { id:2,  cat:'snacks', emoji:'🫁', name:'Pulmón de Res',       desc:'50 g',            price:60,  unit:'' },
+  { id:3,  cat:'snacks', emoji:'🟤', name:'Mollejas',            desc:'100 g',           price:60,  unit:'' },
+  { id:4,  cat:'snacks', emoji:'🐷', name:'Riñón de Cerdo',      desc:'100 g',           price:60,  unit:'' },
+  { id:5,  cat:'snacks', emoji:'🥓', name:'Tocino',              desc:'100 g',           price:50,  unit:'' },
+  { id:6,  cat:'snacks', emoji:'🐟', name:'Charal',              desc:'50 g',            price:80,  unit:'' },
+  { id:7,  cat:'snacks', emoji:'🐠', name:'Sardina',             desc:'50 g',            price:80,  unit:'' },
+  { id:8,  cat:'snacks', emoji:'🥩', name:'Cachete de Ternera',  desc:'100 g',           price:200, unit:'' },
+  { id:9,  cat:'snacks', emoji:'🍗', name:'Chip de Piel de Ternera', desc:'100 g',       price:180, unit:'' },
+  // HUESOS RECREATIVOS
+  { id:10, cat:'huesos', emoji:'🦴', name:'Punta de Costilla',   desc:'4 piezas',        price:140, unit:'' },
+  { id:11, cat:'huesos', emoji:'🦴', name:'Medio Tubo con Tuétano', desc:'10 cm',        price:160, unit:'' },
+  { id:12, cat:'huesos', emoji:'🦴', name:'Rótula de Res',       desc:'',                price:170, unit:'' },
+  { id:13, cat:'huesos', emoji:'🦴', name:'Cabeza de Fémur',     desc:'',                price:170, unit:'' },
+  { id:14, cat:'huesos', emoji:'🦴', name:'Fémur de Res',        desc:'',                price:280, unit:'' },
+  { id:15, cat:'huesos', emoji:'🦴', name:'Hueso Ahumado de Cerdo', desc:'21 cm',        price:100, unit:'' },
+  // MORDEDORES NATURALES
+  { id:16, cat:'mordedores', emoji:'🐾', name:'Pata de Pollo',   desc:'',                price:15,  unit:'pza' },
+  { id:17, cat:'mordedores', emoji:'🐄', name:'Esófago de Res',  desc:'',                price:20,  unit:'pza' },
+  { id:18, cat:'mordedores', emoji:'🫁', name:'Tráquea de Res',  desc:'',                price:25,  unit:'pza' },
+  { id:19, cat:'mordedores', emoji:'🥩', name:'Bull Stick',      desc:'',                price:25,  unit:'pza' },
+  { id:20, cat:'mordedores', emoji:'🦈', name:'Columna de Tiburón', desc:'',             price:40,  unit:'pza' },
+  { id:21, cat:'mordedores', emoji:'🐄', name:'Pezuña de Res',   desc:'',                price:40,  unit:'pza' },
+  { id:22, cat:'mordedores', emoji:'🐷', name:'Oreja de Cerdo',  desc:'',                price:50,  unit:'pza' },
+  { id:23, cat:'mordedores', emoji:'🐄', name:'Oreja de Vaca',   desc:'',                price:60,  unit:'pza' },
+  { id:24, cat:'mordedores', emoji:'🐄', name:'Esófago de Ternera', desc:'',             price:70,  unit:'pza' },
+  // MORDEDORES PREMIUM
+  { id:25, cat:'premium', emoji:'🪢', name:'Trenza de Res Chica (15cm)', desc:'',        price:30,  unit:'pza' },
+  { id:26, cat:'premium', emoji:'🪢', name:'Trenza de Res Grande (30cm)', desc:'',       price:40,  unit:'pza' },
+  { id:27, cat:'premium', emoji:'🦴', name:'Pata de Ternera Mini (4pzas)', desc:'',      price:100, unit:'' },
+  { id:28, cat:'premium', emoji:'🦴', name:'Pata de Ternera Mediana',  desc:'1 pza',     price:100, unit:'pza' },
+  { id:29, cat:'premium', emoji:'🦴', name:'Pata de Ternera Grande',   desc:'1 pza',     price:120, unit:'pza' },
+  { id:30, cat:'premium', emoji:'🦴', name:'Pata de Ternera Jumbo',    desc:'1 pza',     price:140, unit:'pza' },
+  { id:31, cat:'premium', emoji:'🐂', name:'Cuerno de Toro Mediano',   desc:'',          price:60,  unit:'pza' },
+  { id:32, cat:'premium', emoji:'🐂', name:'Cuerno de Toro Grande',    desc:'',          price:80,  unit:'pza' },
+  { id:33, cat:'premium', emoji:'🐂', name:'Cuerno de Toro Jumbo',     desc:'',          price:100, unit:'pza' },
+  { id:34, cat:'premium', emoji:'🦴', name:'Cola de Ternera (chica)',   desc:'',          price:100, unit:'pza' },
+  { id:35, cat:'premium', emoji:'🦴', name:'Cola de Ternera (grande)',  desc:'',          price:120, unit:'pza' },
+  // ESPECIALES
+  { id:36, cat:'especiales', emoji:'💊', name:'Multivitamínico Natural', desc:'90 g · Hígado, charal, cáscara de huevo, zanahoria, hueso de res', price:140, unit:'' },
+  { id:37, cat:'especiales', emoji:'🍗', name:'Stick de Pollo',          desc:'Snack Gourmet',    price:10,  unit:'pza' },
+  { id:38, cat:'especiales', emoji:'🍠', name:'Hueso de Papa con Camote', desc:'Snack Gourmet',   price:10,  unit:'pza' },
+  { id:39, cat:'especiales', emoji:'🥜', name:'Hueso Crema de Cacahuate', desc:'Snack Gourmet',   price:10,  unit:'pza' },
+  { id:40, cat:'especiales', emoji:'🥜', name:'Stick Crema de Cacahuate', desc:'Snack Gourmet',   price:10,  unit:'pza' },
+  { id:41, cat:'especiales', emoji:'🐟', name:'Chips de Aletas',          desc:'50 g',            price:80,  unit:'' },
+];
+
+// ── RENDER PRODUCTS ──
+function renderProducts(cat='all') {
+  const grid = document.getElementById('productsGrid');
+  grid.innerHTML = '';
+  const filtered = cat === 'all' ? products : products.filter(p => p.cat === cat);
+  filtered.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <div class="product-img">${p.emoji}</div>
+      <div class="product-info">
+        <div class="product-category">${catLabel(p.cat)}</div>
+        <div class="product-name">${p.name}</div>
+        ${p.desc ? `<div class="product-desc">${p.desc}</div>` : ''}
+        <div class="product-footer">
+          <div class="product-price">$${p.price}<small>${p.unit ? ' / '+p.unit : ''}</small></div>
+          <button class="add-btn" onclick="addToCart(${p.id})">+ AGREGAR</button>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function catLabel(c) {
+  return { snacks:'Snacks Deshidratados', huesos:'Huesos Recreativos', mordedores:'Mordedores Naturales', premium:'Mordedores Premium', especiales:'Especiales' }[c] || c;
+}
+
+function filterCat(cat, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProducts(cat);
+}
+
+renderProducts();
+
+// ── CART ──
+let cart = [];
+
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  const existing = cart.find(x => x.id === id);
+  if (existing) { existing.qty++; }
+  else { cart.push({ ...p, qty: 1 }); }
+  updateCartUI();
+  showToast(`✅ ${p.name} agregado`);
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(x => x.id !== id);
+  updateCartUI();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(x => x.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(id);
+  else updateCartUI();
+}
+
+function updateCartUI() {
+  const count = cart.reduce((s, x) => s + x.qty, 0);
+  const total = cart.reduce((s, x) => s + x.price * x.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartTotal').textContent = '$' + total.toLocaleString();
+  const el = document.getElementById('cartItems');
+  if (!cart.length) {
+    el.innerHTML = `<div class="cart-empty"><div class="empty-icon">🛒</div><p>Tu pedido está vacío.<br>¡Agrega productos para tu perro!</p></div>`;
+    return;
+  }
+  el.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-emoji">${item.emoji}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        ${item.desc ? `<div class="cart-item-variant">${item.desc}</div>` : ''}
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+          <span class="qty-val">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div class="cart-item-price">$${(item.price * item.qty).toLocaleString()}</div>
+        <button class="remove-btn" onclick="removeFromCart(${item.id})">🗑</button>
+      </div>
+    </div>`).join('');
+}
+
+function toggleCart() {
+  const overlay = document.getElementById('cartOverlay');
+  const panel = document.getElementById('cartPanel');
+  overlay.classList.toggle('open');
+  panel.classList.toggle('open');
+}
+
+// ── CHECKOUT ──
+let currentStep = 1;
+
+function openCheckout() {
+  if (!cart.length) { showToast('❗ Tu pedido está vacío'); return; }
+  toggleCart();
+  currentStep = 1;
+  document.getElementById('successPanel').style.display = 'none';
+  document.getElementById('modalBody').style.display = 'block';
+  goStep(1);
+  document.getElementById('checkoutModal').classList.add('open');
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').classList.remove('open');
+}
+
+function goStep(n) {
+  if (n > 1 && !validateStep(currentStep)) return;
+  currentStep = n;
+  document.querySelectorAll('.step-panel').forEach((p, i) => p.classList.toggle('active', i+1 === n));
+  document.querySelectorAll('[id^="step-tab-"]').forEach((t, i) => {
+    t.classList.remove('active','done');
+    if (i+1 < n) t.classList.add('done');
+    else if (i+1 === n) t.classList.add('active');
+  });
+  if (n === 4) buildSummary();
+}
+
+function validateStep(n) {
+  if (n === 1) {
+    if (!document.getElementById('f-name').value.trim()) { showToast('❗ Ingresa tu nombre'); return false; }
+    if (!document.getElementById('f-phone').value.trim()) { showToast('❗ Ingresa tu teléfono'); return false; }
+  }
+  if (n === 2) {
+    if (!document.getElementById('f-street').value.trim()) { showToast('❗ Ingresa tu calle'); return false; }
+    if (!document.getElementById('f-colonia').value.trim()) { showToast('❗ Ingresa tu colonia'); return false; }
+    if (!document.getElementById('f-city').value.trim()) { showToast('❗ Ingresa tu ciudad'); return false; }
+  }
+  if (n === 3) {
+    if (!document.querySelector('input[name="payment"]:checked')) { showToast('❗ Selecciona forma de pago'); return false; }
+  }
+  return true;
+}
+
+function buildSummary() {
+  const total = cart.reduce((s, x) => s + x.price * x.qty, 0);
+  const pay = document.querySelector('input[name="payment"]:checked')?.value || '';
+  const payNames = { card:'Tarjeta', cash:'Efectivo al recibir', transfer:'Transferencia SPEI', whatsapp:'Por WhatsApp' };
+  document.getElementById('orderSummary').innerHTML = `
+    <h4>RESUMEN DEL PEDIDO</h4>
+    ${cart.map(x => `<div class="summary-item"><span>${x.name} ×${x.qty}</span><span>$${(x.price*x.qty).toLocaleString()}</span></div>`).join('')}
+    <div class="summary-item total"><span>TOTAL</span><span class="price">$${total.toLocaleString()}</span></div>
+    <div class="summary-item" style="margin-top:10px;padding-top:10px;border-top:1px solid #444;">
+      <span>Pago</span><span>${payNames[pay]||pay}</span>
+    </div>
+    <div class="summary-item">
+      <span>Entrega</span>
+      <span>${document.getElementById('f-street').value}, ${document.getElementById('f-colonia').value}, ${document.getElementById('f-city').value}</span>
+    </div>`;
+}
+
+function updatePaymentInfo() {
+  const pay = document.querySelector('input[name="payment"]:checked')?.value;
+  const el = document.getElementById('paymentDetails');
+  const info = {
+    card:     { title:'Pago con Tarjeta', text:'Se coordinará el cobro por terminal o link de pago al confirmar tu pedido por WhatsApp.' },
+    cash:     { title:'Pago en Efectivo', text:'Paga al momento de recibir tu pedido. Tendremos cambio disponible.' },
+    transfer: { title:'Transferencia SPEI', text:'Te enviaremos los datos bancarios por WhatsApp para realizar tu transferencia.', account:'55 3916 0829' },
+    whatsapp: { title:'Acordar por WhatsApp', text:'Nuestro equipo te contactará para acordar el método de pago que más te convenga.' },
+  };
+  if (!pay || !info[pay]) { el.style.display = 'none'; return; }
+  const d = info[pay];
+  el.style.display = 'block';
+  el.innerHTML = `<h4>${d.title}</h4><p>${d.text}</p>${d.account ? `<div class="account">📱 ${d.account}</div>` : ''}`;
+}
+
+function placeOrder() {
+  const name = document.getElementById('f-name').value;
+  const phone = document.getElementById('f-phone').value;
+  const street = document.getElementById('f-street').value;
+  const colonia = document.getElementById('f-colonia').value;
+  const city = document.getElementById('f-city').value;
+  const state = document.getElementById('f-state').value;
+  const cp = document.getElementById('f-cp').value;
+  const refs = document.getElementById('f-refs').value;
+  const notes = document.getElementById('f-notes').value;
+  const pay = document.querySelector('input[name="payment"]:checked')?.value || '';
+  const payNames = { card:'Tarjeta', cash:'Efectivo', transfer:'Transferencia', whatsapp:'WhatsApp' };
+  const total = cart.reduce((s, x) => s + x.price * x.qty, 0);
+
+  const lines = [
+    `🐾 *NUEVO PEDIDO – COLMILLO NATURAL* 🐾`,
+    ``,
+    `👤 *Cliente:* ${name}`,
+    `📱 *Teléfono:* ${phone}`,
+    ``,
+    `📦 *Productos:*`,
+    ...cart.map(x => `  • ${x.name} ×${x.qty} = $${(x.price*x.qty).toLocaleString()}`),
+    ``,
+    `💰 *Total: $${total.toLocaleString()}*`,
+    `💳 *Pago:* ${payNames[pay]||pay}`,
+    ``,
+    `🏠 *Dirección de entrega:*`,
+    `  ${street}, Col. ${colonia}`,
+    `  ${city}, ${state} CP ${cp}`,
+    refs ? `  Referencias: ${refs}` : '',
+    notes ? `📝 *Notas:* ${notes}` : '',
+  ].filter(l => l !== '').join('\n');
+
+  const waUrl = `https://wa.me/5539160829?text=${encodeURIComponent(lines)}`;
+  document.getElementById('waOrderBtn').href = waUrl;
+
+  document.getElementById('modalBody').style.display = 'none';
+  document.getElementById('successPanel').style.display = 'block';
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+updateCartUI();
+</script>
+</body>
+</html>
