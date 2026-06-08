@@ -584,14 +584,6 @@
         <p style="font-size:13px;color:#888;margin-bottom:16px;">Selecciona tu forma de pago:</p>
         <div class="payment-methods">
           <div>
-            <input type="radio" name="payment" id="pay-card" value="card" class="payment-option" onchange="updatePaymentInfo()">
-            <label for="pay-card" class="payment-label">
-              <span class="pay-icon">💳</span>
-              <span class="pay-name">TARJETA</span>
-              <span class="pay-desc">Débito o crédito</span>
-            </label>
-          </div>
-          <div>
             <input type="radio" name="payment" id="pay-cash" value="cash" class="payment-option" onchange="updatePaymentInfo()">
             <label for="pay-cash" class="payment-label">
               <span class="pay-icon">💵</span>
@@ -869,7 +861,7 @@ function updatePaymentInfo() {
   const info = {
     card:     { title:'Pago con Tarjeta', text:'Se coordinará el cobro por terminal o link de pago al confirmar tu pedido por WhatsApp.' },
     cash:     { title:'Pago en Efectivo', text:'Paga al momento de recibir tu pedido. Tendremos cambio disponible.' },
-    transfer: { title:'Transferencia SPEI', text:'Te enviaremos los datos bancarios por WhatsApp para realizar tu transferencia.', account:'55 3916 0829' },
+    transfer: { title:'🏦 Transferencia SPEI', text:'Realiza tu pago a los siguientes datos y envía tu comprobante por WhatsApp:', account:'Banco: SPIN by OXXO\nCLABE: 728969000176830941\nNombre: Leo Estrada' },
     whatsapp: { title:'Acordar por WhatsApp', text:'Nuestro equipo te contactará para acordar el método de pago que más te convenga.' },
   };
   if (!pay || !info[pay]) { el.style.display = 'none'; return; }
@@ -889,7 +881,7 @@ function placeOrder() {
   const refs = document.getElementById('f-refs').value;
   const notes = document.getElementById('f-notes').value;
   const pay = document.querySelector('input[name="payment"]:checked')?.value || '';
-  const payNames = { card:'Tarjeta', cash:'Efectivo', transfer:'Transferencia', whatsapp:'WhatsApp' };
+  const payNames = { cash:'Efectivo', transfer:'Transferencia SPEI', whatsapp:'WhatsApp' };
   const total = cart.reduce((s, x) => s + x.price * x.qty, 0);
 
   const lines = [
@@ -903,6 +895,14 @@ function placeOrder() {
     ``,
     `💰 *Total: $${total.toLocaleString()}*`,
     `💳 *Pago:* ${payNames[pay]||pay}`,
+    ...(pay === 'transfer' ? [
+      ``,
+      `🏦 *Datos para transferencia:*`,
+      `  Banco: SPIN by OXXO`,
+      `  CLABE: 728969000176830941`,
+      `  Nombre: Leo`,
+      `  _(Por favor envía tu comprobante por WhatsApp)_`,
+    ] : []),
     ``,
     `🏠 *Dirección de entrega:*`,
     `  ${street}, Col. ${colonia}`,
