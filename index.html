@@ -418,8 +418,8 @@
   <div class="hero-content">
     <div class="hero-badge">🏆 CALIDAD PREMIUM</div>
     <h1>COLMILLO<br><span>NATURAL</span></h1>
-    <p class="hero-sub">ALIMENTOS DESHIDRATADOS PREMIUM PARA PERROS</p>
-    <h2 class="hero-tagline">Sano y sabroso, simplemente <span>asombroso.</span></h2>
+    <p class="hero-tagline">ALIMENTOS DESHIDRATADOS PREMIUM PARA PERROS</p>
+    <p class="hero-sub" style=font-size:30px>Sano y sabroso, simplemente <span>asombroso.</span></p>
     <div class="hero-btns">
       <a href="#productos" class="btn-primary">VER PRODUCTOS</a>
       <a href="https://wa.me/5539160829" target="_blank" class="btn-outline">💬 WHATSAPP</a>
@@ -708,9 +708,9 @@ function renderProducts(cat='all') {
       <div class="product-img">${p.emoji}</div>
       <div class="product-info">
         <div class="product-category">${catLabel(p.cat)}</div>
-        <div class="product-name">${p.name}</div>
+        <div class="product-name" style=font-size:25px>${p.name}</div>
         ${p.desc ? `<div class="product-desc">${p.desc}</div>` : ''}
-        ${p.benefit ? `<div class="product-desc" style="color:#aaa;font-size:11px;margin-top:2px;line-height:1.4;">🐾 ${p.benefit}</div>` : ''}
+        ${p.benefit ? `<div class="product-desc" style="color:#aaa;font-size:14px;margin-top:2px;line-height:1.4;">🐾 ${p.benefit}</div>` : ''}
         <div class="product-footer">
           <div class="product-price">$${p.price}<small>${p.unit ? ' / '+p.unit : ''}</small></div>
           <button class="add-btn" onclick="addToCart(${p.id})">+ AGREGAR</button>
