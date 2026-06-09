@@ -651,12 +651,12 @@
 const products = [
   // SNACKS DESHIDRATADOS
   { id:1,  cat:'snacks', emoji:'🥩', name:'Hígado de Res',       desc:'100 g', benefit:'Rico en vitamina A, B12 y hierro. Apoya la visión, energía y producción de glóbulos rojos.', price:60,  unit:'' },
-  { id:2,  cat:'snacks', emoji:'🫁', name:'Pulmón de Res',       desc:'50 g',  benefit:'Alto en vitamina B12 y zinc. Fortalece el sistema inmune y apoya el metabolismo.', price:60,  unit:'' },
+  { id:2,  cat:'snacks', emoji:'🫁',img:'imagenes/pulmon_res.jpg', name:'Pulmón de Res',       desc:'50 g',  benefit:'Alto en vitamina B12 y zinc. Fortalece el sistema inmune y apoya el metabolismo.', price:60,  unit:'' },
   { id:3,  cat:'snacks', emoji:'🟤', name:'Mollejas',            desc:'100 g', benefit:'Excelente fuente de proteína magra y vitaminas del grupo B. Favorece la digestión.', price:60,  unit:'' },
   { id:4,  cat:'snacks', emoji:'🐷', name:'Riñón de Cerdo',      desc:'100 g', benefit:'Rico en vitaminas B y selenio. Apoya el buen funcionamiento del metabolismo y defensas.', price:60,  unit:'' },
   { id:5,  cat:'snacks', emoji:'🥓', name:'Tocino',              desc:'100 g', benefit:'Fuente de energía y proteína animal. Premio irresistible para recompensar y entrenar.', price:50,  unit:'' },
-  { id:6,  cat:'snacks', emoji:'🐟', name:'Charal',              desc:'50 g',  benefit:'Rico en omega-3, calcio y fósforo. Mejora el pelaje, la piel y la salud ósea.', price:80,  unit:'' },
-  { id:7,  cat:'snacks', emoji:'🐠', name:'Sardina',             desc:'50 g',  benefit:'Alta en omega-3 y proteína. Favorece articulaciones sanas y un pelaje brillante.', price:80,  unit:'' },
+  { id:6,  cat:'snacks', emoji:'🐟', img:'imagenes/charal.jpg', name:'Charal',desc:'50 g',  benefit:'Rico en omega-3, calcio y fósforo. Mejora el pelaje, la piel y la salud ósea.', price:80,  unit:'' },
+  { id:7,  cat:'snacks', emoji:'🐠', img:'imagenes/cabeza_pescado.jpg',name:'Sardina',             desc:'50 g',  benefit:'Alta en omega-3 y proteína. Favorece articulaciones sanas y un pelaje brillante.', price:80,  unit:'' },
   { id:8,  cat:'snacks', emoji:'🥩', name:'Cachete de Ternera',  desc:'100 g', benefit:'Rico en colágeno y proteína. Apoya las articulaciones, la piel y el tejido muscular.', price:200, unit:'' },
   { id:9,  cat:'snacks', emoji:'🍗', name:'Chip de Piel de Ternera', desc:'100 g', benefit:'Fuente natural de colágeno y elastina. Favorece la piel, pelaje y articulaciones.', price:180, unit:'' },
   // HUESOS RECREATIVOS
@@ -669,12 +669,12 @@ const products = [
   // MORDEDORES NATURALES
   { id:16, cat:'mordedores', emoji:'🐾', name:'Pata de Pollo',   desc:'', benefit:'Rica en glucosamina y condroitina. Cuida articulaciones y es ideal para razas pequeñas.', price:15,  unit:'pza' },
   { id:17, cat:'mordedores', emoji:'🐄', name:'Esófago de Res',  desc:'', benefit:'Alto en condroitina natural. Apoya la salud articular y es fácil de digerir.', price:20,  unit:'pza' },
-  { id:18, cat:'mordedores', emoji:'🫁', name:'Tráquea de Res',  desc:'', benefit:'Fuente natural de condroitina y glucosamina. Limpia dientes y cuida las articulaciones.', price:25,  unit:'pza' },
+  { id:18, cat:'mordedores', emoji:'🫁', img:'imagenes/traquea_res.jpg',name:'Tráquea de Res',  desc:'', benefit:'Fuente natural de condroitina y glucosamina. Limpia dientes y cuida las articulaciones.', price:25,  unit:'pza' },
   { id:19, cat:'mordedores', emoji:'🥩', name:'Bull Stick',      desc:'', benefit:'100% proteína muscular deshidratada. Bajo en grasa, altamente digestible y muy palatable.', price:25,  unit:'pza' },
   { id:20, cat:'mordedores', emoji:'🦈', name:'Columna de Tiburón', desc:'', benefit:'Rica en colágeno marino y glucosamina. Excelente para articulaciones y masticación prolongada.', price:40,  unit:'pza' },
   { id:21, cat:'mordedores', emoji:'🐄', name:'Pezuña de Res',   desc:'', benefit:'Dura y resistente, perfecta para limpieza dental profunda. Ocupa y entretiene por horas.', price:40,  unit:'pza' },
-  { id:22, cat:'mordedores', emoji:'🐷', name:'Oreja de Cerdo',  desc:'', benefit:'Rica en cartílago y colágeno. Limpia el sarro, fortalece encías y es muy apetecible.', price:50,  unit:'pza' },
-  { id:23, cat:'mordedores', emoji:'🐄', name:'Oreja de Vaca',   desc:'', benefit:'Textura cartilaginosa con colágeno natural. Reduce sarro y mantiene la boca sana.', price:60,  unit:'pza' },
+  { id:22, cat:'mordedores', emoji:'🐷', img:'imagenes/oreja_cerdo.jpg', name:'Oreja de Cerdo',  desc:'', benefit:'Rica en cartílago y colágeno. Limpia el sarro, fortalece encías y es muy apetecible.', price:50,  unit:'pza' },
+  { id:23, cat:'mordedores', emoji:'🐄', img:'imagenes/oreja_res.jpg',name:'Oreja de Vaca',   desc:'', benefit:'Textura cartilaginosa con colágeno natural. Reduce sarro y mantiene la boca sana.', price:60,  unit:'pza' },
   { id:24, cat:'mordedores', emoji:'🐄', name:'Esófago de Ternera', desc:'', benefit:'Suave y muy digestible, alto en condroitina. Ideal para perros sensibles o mayores.', price:70,  unit:'pza' },
   // MORDEDORES PREMIUM
   { id:25, cat:'premium', emoji:'🪢', name:'Trenza de Res Chica (15cm)', desc:'', benefit:'Proteína pura trenzada, muy digestible. Ideal para razas pequeñas y medianas.', price:30,  unit:'pza' },
@@ -694,7 +694,7 @@ const products = [
   { id:38, cat:'especiales', emoji:'🍠', name:'Hueso de Papa con Camote', desc:'Snack Gourmet', benefit:'Fuente de fibra, betacarotenos y energía. Digestivo, suave y perfecto para perros sensibles.', price:10,  unit:'pza' },
   { id:39, cat:'especiales', emoji:'🥜', name:'Hueso Crema de Cacahuate', desc:'Snack Gourmet', benefit:'Con proteína vegetal y grasas saludables. Premio irresistible que encanta a todos los perros.', price:10,  unit:'pza' },
   { id:40, cat:'especiales', emoji:'🥜', name:'Stick Crema de Cacahuate', desc:'Snack Gourmet', benefit:'Energético y sabroso, con grasas buenas naturales. Ideal para premiar y entrenar.', price:10,  unit:'pza' },
-  { id:41, cat:'especiales', emoji:'🐟', name:'Chips de Aletas',          desc:'50 g', benefit:'Rico en omega-3 y proteína marina. Mejora el pelaje, piel y apoya la función cerebral.', price:80,  unit:'' },
+  { id:41, cat:'especiales', emoji:'🐟',img:'imagenes/chip_aleta.jpg', name:'Chips de Aletas',          desc:'50 g', benefit:'Rico en omega-3 y proteína marina. Mejora el pelaje, piel y apoya la función cerebral.', price:80,  unit:'' },
 ];
 
 // ── RENDER PRODUCTS ──
@@ -706,7 +706,9 @@ function renderProducts(cat='all') {
     const card = document.createElement('div');
     card.className = 'product-card';
     card.innerHTML = `
-      <div class="product-img">${p.emoji}</div>
+      ${p.img 
+  ? `<img class="product-img" src="${p.img}" alt="${p.name}" style="width:100%;height:180px;object-fit:cover;">` 
+  : `<div class="product-img">${p.emoji}</div>`}
       <div class="product-info">
         <div class="product-category">${catLabel(p.cat)}</div>
         <div class="product-name" style=font-size:25px>${p.name}</div>
